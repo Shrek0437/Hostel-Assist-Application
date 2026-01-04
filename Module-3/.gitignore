@@ -1,0 +1,7 @@
+# Frontend (Vite/React)
+node_modules/
+dist/
+
+# Backend (Flask/Python)
+__pycache__/
+flask-backend/
