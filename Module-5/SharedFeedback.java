@@ -15,6 +15,7 @@ public class SharedFeedback {
             RandomAccessFile file = new RandomAccessFile(FILE_NAME, "rw");
             channel = file.getChannel();
             buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, SIZE);
+            file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
