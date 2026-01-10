@@ -9,13 +9,13 @@ public class SharedFeedback {
 
     private static MappedByteBuffer buffer;
     private static FileChannel channel;
+    private static RandomAccessFile file;
 
     static {
         try {
-            RandomAccessFile file = new RandomAccessFile(FILE_NAME, "rw");
+            file = new RandomAccessFile(FILE_NAME, "rw");
             channel = file.getChannel();
             buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, SIZE);
-            file.close();
             // Reset counts on startup
             try (FileLock lock = channel.lock()) {
                 buffer.putInt(0, 0); // Good
