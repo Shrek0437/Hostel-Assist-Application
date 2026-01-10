@@ -16,6 +16,12 @@ public class SharedFeedback {
             channel = file.getChannel();
             buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, SIZE);
             file.close();
+            // Reset counts on startup
+            try (FileLock lock = channel.lock()) {
+                buffer.putInt(0, 0); // Good
+                buffer.putInt(4, 0); // Average
+                buffer.putInt(8, 0); // Poor
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
