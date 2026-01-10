@@ -15,6 +15,8 @@ The project integrates **five independent modules**, each showcasing a different
 
 Each module solves a specific hostel-related problem using a different distributed communication model.
 
+---
+
 ### Module - 1: Hostel Complaint Management System
 
 **Communication Model**: Socket Programming (TCP)
@@ -36,6 +38,8 @@ Each module solves a specific hostel-related problem using a different distribut
 - The server creates a **unique** `Complaint ID` for each received complaint which acts as the `key` and the `value` is a `Complaint` object, which the server creates an instance for each complaint.
 - Through `multi-threading`, the server is also capable of handling **multiple requests** from different clients at the same time therefore making the system **scalable and fast**.
 - The system also handles cases where the server is not running or has stopped and notifies the same to the client ensuring clean **error-handling** and **status communication**.
+
+---
 
 ### Module - 3: Hostel Notice Board System
 
