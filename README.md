@@ -41,7 +41,7 @@ Each module solves a specific hostel-related problem using a different distribut
 
 **Architecture Diagram**
 
-<img src="./Architecture-Diagrams/M1%20Architecture%20Diagram.jpeg" width="500px" alt="Module-3_Architecture_Diagram">
+<img src="./Architecture-Diagrams/M1%20Architecture%20Diagram.jpeg" width="500px" alt="Module-1_Architecture_Diagram">
 
 ---
 
@@ -81,6 +81,44 @@ Each module solves a specific hostel-related problem using a different distribut
 **Architecture Diagram**
 
 <img src="./Architecture-Diagrams/M3%20Architecture%20Diagram.png" width="500px" alt="Module-3_Architecture_Diagram">
+
+---
+
+### Module - 4: Student Resource Sharing System
+
+**Communication Model**: Peer-to-Peer (P2P) Communication over TCP
+Problem
+
+**Problem** : Students need an efficient way to share academic resources such as PDFs, notes, and study materials directly with each other. Using a centralized server for file storage can lead to high load, bottlenecks, and a single point of failure.
+**Solution** : A Peer-to-Peer (P2P) based resource sharing system is developed where students directly exchange files with one another. Each peer acts as both a client and a server, enabling decentralized file sharing without relying on a central storage server.
+
+**Tech Stack**
+
+- **_Language_**: Java
+- **_UI_**: HTML,CSS
+- **_Networking_**: Java Sockets
+- **_Protocol_**: TCP
+- **_Architecture_**: Peer-to-Peer (Decentralized)
+
+**Features**
+
+1. A simple **web-based** interface where students can **upload,view and download** resources.
+2. Students can **download** files from other peers.
+3. Each peer functions as both **client and server**.
+4. No **centralized** file storage server.
+5. Multiple peers can run and communicate simultaneously.
+
+**System Design**
+
+- The system follows a **Peer-to-Peer** architecture where every node has equal responsibility.
+- The system consists of two roles:
+  i. Server Role: Listens for incoming file requests from other peers and sends requested files directly to the requesting peer.
+  ii. Client Role: Connects to another peer using IP address and port and requests and downloads files.
+- The system uses TCP sockets for reliable file transfer where each peer maintains a local shared directory where uploaded files are stored and made available to other peers.
+
+**Architecture Diagram**
+
+<img src="./Architecture-Diagrams/M4%20Architecture%20Diagram.jpeg" width="500px" alt="Module-4_Architecture_Diagram">
 
 ---
 
@@ -126,4 +164,4 @@ Each module solves a specific hostel-related problem using a different distribut
 
 **Architecture Diagram**
 
-<img src="./Architecture-Diagrams/M5%20Architecture%20Diagram.jpeg" width="500px" alt="Module-3_Architecture_Diagram">
+<img src="./Architecture-Diagrams/M5%20Architecture%20Diagram.jpeg" width="500px" alt="Module-5_Architecture_Diagram">
