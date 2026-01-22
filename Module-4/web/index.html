@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resource Sharing Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Resource Sharing Hub</h1>
+      <p>Connect and Share Resources Seamlessly</p>
+    </header>
+
+    <main>
+      <!-- ADD PEER -->
+      <section class="card">
+        <h2>Connect a Peer</h2>
+        <input
+          type="text"
+          id="peerInput"
+          placeholder="Enter Peer IP or Hostname"
+        />
+        <button onclick="addPeer()">Connect</button>
+
+        <h3>Active Connections</h3>
+        <ul id="peerList">
+          <li class="empty">No active connections</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Upload Resources</h2>
+
+        <input type="file" id="fileInput" />
+        <button onclick="upload()">Upload Resource</button>
+
+        <h3>Shared Resources</h3>
+        <ul id="fileList"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

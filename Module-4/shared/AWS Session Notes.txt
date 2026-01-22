@@ -1,0 +1,25 @@
+Amazon SageMaker - end to end managed ml platform
+
+AWS WAF - route malicious traffic, cyber security
+
+AWS IOT CORE - HARDWARE
+
+AWS PARALLEL CLUSTER - cloud based software for running high graphic rendering projects 
+
+cloud service models
+
+IaaS
+PaaS
+SaaS
+
+cloud computing deployment models
+
+cloud
+hybrid
+on-premises (private cloud)
+
+horizontal and vertical scaling
+
+EC2 service
+
+AWS SkillBuilder for free resources

@@ -11,7 +11,6 @@ public class HostelAssistDashboard extends JFrame {
     private boolean rmiReady = false;
     private boolean restReady = false;
     private boolean peerReady = false;
-    // private boolean sharedMemReady = false;
 
     // Status labels
     private JLabel socketStatus;
@@ -73,7 +72,7 @@ public class HostelAssistDashboard extends JFrame {
         module1Btn.addActionListener(e -> launchModule1Client());
         module2Btn.addActionListener(e -> launchModule2Client());
         module3Btn.addActionListener(e -> launchModule3Client());
-        // module4Btn.addActionListener(e -> launchModule4Client());
+        module4Btn.addActionListener(e -> launchModule4Client());
         module5Btn.addActionListener(e -> launchModule5Clients());
 
         panel.add(module1Btn);
@@ -105,8 +104,7 @@ public class HostelAssistDashboard extends JFrame {
         startSocketModule();
         startRMIModule();
         startRESTModule();
-        // startPeerModule();
-        // startSharedMemoryModule();
+        startPeerModule();
     }
 
     private void startSocketModule() {
@@ -137,10 +135,6 @@ public class HostelAssistDashboard extends JFrame {
         }
     }
 
-    private void startPeerModule() {
-
-    }
-
     private void startRESTModule() {
         try {
             startProcess(
@@ -155,6 +149,20 @@ public class HostelAssistDashboard extends JFrame {
         }
     }
 
+    private void startPeerModule() {
+        try {
+            startProcess(
+                new String[]{"java","PeerServer"},
+                new File("Module-4")
+            );
+            peerReady = true;
+            peerStatus.setText("🟢 Peer to Peer Service Running");
+        } catch (Exception e) {
+            peerStatus.setText("🔴 Peer to Peer Service failed");
+            logError("Peer to Peer backend failed", e);
+        }
+    }
+
     private String getVenvPythonPath() {
       String os = System.getProperty("os.name").toLowerCase();
       if (os.contains("win")) {
@@ -163,20 +171,6 @@ public class HostelAssistDashboard extends JFrame {
         return "Module-3/backend/flask-backend/bin/python";
       }
     }
-
-    // private void startSharedMemoryModule() {
-    //     try {
-    //         startProcess(
-    //                 new String[]{"java", "SharedFeedback"},
-    //                 new File("Module-5")
-    //         );
-    //         sharedMemReady = true;
-    //         sharedMemStatus.setText("🟢 Shared Memory Ready");
-    //     } catch (Exception e) {
-    //         sharedMemStatus.setText("🔴 Shared Memory Failed");
-    //         logError("Shared memory backend failed", e);
-    //     }
-    // }
 
     /* ================= CLIENT LAUNCH ================= */
 
@@ -215,6 +209,15 @@ public class HostelAssistDashboard extends JFrame {
 
 
     private void launchModule4Client() {
+        if (!peerReady) {
+            showError("Peer to Peer backend is not running.");
+            return;
+        }
+        try {
+            Desktop.getDesktop().browse(new URI("http://localhost:10000/"));
+        } catch (Exception e) {
+            showError("Failed to open browser for Module 4");
+        }
 
     }
 
