@@ -40,6 +40,37 @@ Each module solves a specific hostel-related problem using a different distribut
 - The system also handles cases where the server is not running or has stopped and notifies the same to the client ensuring clean **error-handling** and **status communication**.
 
 ---
+###Module – 2: Hostel Room Information Service
+
+**Communication Model**: Java RMI (Remote Method Invocation)
+
+**Problem** :
+Students require a simple and efficient way to retrieve hostel room information such as room occupancy and warden contact details without physically visiting the hostel office or relying on notice boards from the Stone Age.
+
+**Solution** :
+A distributed Java application using Java RMI, where a client-side desktop UI allows students to search for hostel room details by entering a room number. The backend RMI server processes the request and returns the corresponding room and warden information from in-memory storage.
+
+**Features**
+1. A simple desktop-based UI developed using Java Swing that allows students to enter a room number.
+2. Java RMI-based communication between the client and server for remote data access.
+3. The RMI server exposes multiple remote methods to fetch hostel room and warden details.
+4. Hostel data is stored using in-memory collections such as HashMap for fast access.
+5. Clear separation between client logic, remote interface, and server-side implementation.
+6. Ensures modularity and scalability using distributed object-oriented principles.
+
+**System Design**
+
+1. The system follows a client–server architecture using Java RMI.
+2. The client application provides a UI with a room number input field and a display area for results.
+3. The client looks up the remote object from the RMI Registry and invokes remote methods.
+4. The server implements a remote interface that defines methods such as:
+5. Fetching room details by room number
+6. Retrieving warden contact information
+7. Hostel room information is stored in a HashMap, where the key is the room number and the value is a Room object containing occupant names and warden details.
+8. The RMI runtime handles stub–skeleton communication, object serialization, and network-level details transparently.
+
+The system demonstrates core concepts of distributed object management and remote method invocation.
+---
 
 ### Module - 3: Hostel Notice Board System
 
