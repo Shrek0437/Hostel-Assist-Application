@@ -40,7 +40,7 @@ Each module solves a specific hostel-related problem using a different distribut
 - The system also handles cases where the server is not running or has stopped and notifies the same to the client ensuring clean **error-handling** and **status communication**.
 
 ---
-###Module – 2: Hostel Room Information Service
+### Module – 2: Hostel Room Information Service
 
 **Communication Model**: Java RMI (Remote Method Invocation)
 
