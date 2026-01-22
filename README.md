@@ -39,6 +39,10 @@ Each module solves a specific hostel-related problem using a different distribut
 - Through `multi-threading`, the server is also capable of handling **multiple requests** from different clients at the same time therefore making the system **scalable and fast**.
 - The system also handles cases where the server is not running or has stopped and notifies the same to the client ensuring clean **error-handling** and **status communication**.
 
+**Architecture Diagram**
+
+<img src="./Architecture-Diagrams/M1%20Architecture%20Diagram.jpeg" width="500px" alt="Module-3_Architecture_Diagram">
+
 ---
 
 ### Module - 3: Hostel Notice Board System
@@ -77,3 +81,49 @@ Each module solves a specific hostel-related problem using a different distribut
 **Architecture Diagram**
 
 <img src="./Architecture-Diagrams/M3%20Architecture%20Diagram.png" width="500px" alt="Module-3_Architecture_Diagram">
+
+---
+
+### Module - 5: Mess Feedback Live Counter System
+
+**Communication Model**: Shared Memory using Memory-Mapped File
+
+**Problem** : Students need a way to submit mess feedback (Good, Average, Poor) digitally and the management needs to view live feedback count.
+**Solution** : A shared-memory based system where multiple student applications update common feedback counters and a display application shows live results.
+
+**Tech Stack**
+
+- **_Language_**: Java
+- **_UI_**: Java Swing
+- **_Shared Memory_**: Memory-Mapped File (MappedByteBuffer)
+- **_Synchronization_**: File Lock (FileLock)
+- **_Architecture_**: Multi-process shared memory system
+
+**Features**
+
+1. A simple **desktop UI** is developed using Java Swing for **submitting** feedback.
+2. A separate Java Swing UI displays **live feedback** counts.
+3. **Multiple client** processes can run simultaneously.
+4. `Shared memory` is implemented using a `memory-mapped file`.
+5. **File locking** is used to prevent `race` conditions.
+6. All data is stored in a **shared in-memory** file for **fast access**.
+7. The display updates automatically in real time.
+
+**System Design**
+
+- The system consists of two applications:
+  i. **FeedbackUI** for submitting feedback.
+  ii. **DisplayUI** for viewing live feedback counts.
+- It also has a **shared memory** file (feedback.dat), which is used to store the following data
+  i. `Good count`
+  ii. `Average count`
+  iii. `Poor count`
+- The system is also designed to process **multiple feedbacks** with proper **synchronization** and **without any conflicts**.
+- The **FeedbackUI**, accesses the same shared memory file and **updates** the counters using synchronization.
+- The **DisplayUI**, reads the shared memory **every second** and displays the **live** updated counters.
+- The shared memory logic is implemented in `SharedFeedback.java` using `MappedByteBuffer`, `FileChannela`, `FileLock` and `Synchronization`.
+- The system **effectively** prevents `race conditions` and maintains data **consistency** throughout the course of communication.
+
+**Architecture Diagram**
+
+<img src="./Architecture-Diagrams/M5%20Architecture%20Diagram.jpeg" width="500px" alt="Module-3_Architecture_Diagram">
