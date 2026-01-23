@@ -10,7 +10,6 @@ public class HostelAssistDashboard extends JFrame {
     private boolean socketReady = false;
     private boolean rmiReady = false;
     private boolean restReady = false;
-    private boolean peerReady = false;
 
     // Status labels
     private JLabel socketStatus;
@@ -66,8 +65,8 @@ public class HostelAssistDashboard extends JFrame {
         socketStatus = new JLabel("Initializing...");
         rmiStatus = new JLabel("Initializing...");
         restStatus = new JLabel("Initializing...");
-        peerStatus = new JLabel("Initializing...");
-        sharedMemStatus = new JLabel("🟢 Shared Memory Service Running");
+        peerStatus = new JLabel("Peer to Peer Service Running");
+        sharedMemStatus = new JLabel("Shared Memory Service Running");
 
         module1Btn.addActionListener(e -> launchModule1Client());
         module2Btn.addActionListener(e -> launchModule2Client());
@@ -104,7 +103,6 @@ public class HostelAssistDashboard extends JFrame {
         startSocketModule();
         startRMIModule();
         startRESTModule();
-        startPeerModule();
     }
 
     private void startSocketModule() {
@@ -114,9 +112,9 @@ public class HostelAssistDashboard extends JFrame {
                 new File("Module-1")
             );
             socketReady = true;
-            socketStatus.setText("🟢 Complaint Server Running");
+            socketStatus.setText("Complaint Server Running");
         } catch (Exception e) {
-            socketStatus.setText("🔴 Complaint Server Failed");
+            socketStatus.setText("Complaint Server Failed");
             logError("Complaint backend failed", e);
         }
     }
@@ -128,9 +126,9 @@ public class HostelAssistDashboard extends JFrame {
                     new File("Module-2")
             );
             rmiReady = true;
-            rmiStatus.setText("🟢 RMI Server Running");
+            rmiStatus.setText("RMI Server Running");
         } catch (Exception e) {
-            rmiStatus.setText("🔴 RMI Server Failed");
+            rmiStatus.setText("RMI Server Failed");
             logError("RMI backend failed", e);
         }
     }
@@ -142,24 +140,10 @@ public class HostelAssistDashboard extends JFrame {
             new File("Module-3/backend")
             );
             restReady = true;
-            restStatus.setText("🟢 REST Service Running");
+            restStatus.setText("REST Service Running");
         } catch (Exception e) {
-            restStatus.setText("🔴 REST Service Failed");
+            restStatus.setText("REST Service Failed");
             logError("REST backend failed", e);
-        }
-    }
-
-    private void startPeerModule() {
-        try {
-            startProcess(
-                new String[]{"java","PeerServer"},
-                new File("Module-4")
-            );
-            peerReady = true;
-            peerStatus.setText("🟢 Peer to Peer Service Running");
-        } catch (Exception e) {
-            peerStatus.setText("🔴 Peer to Peer Service failed");
-            logError("Peer to Peer backend failed", e);
         }
     }
 
@@ -207,18 +191,16 @@ public class HostelAssistDashboard extends JFrame {
         }
     }
 
-
     private void launchModule4Client() {
-        if (!peerReady) {
-            showError("Peer to Peer backend is not running.");
-            return;
-        }
         try {
-            Desktop.getDesktop().browse(new URI("http://localhost:10000/"));
+            startProcess(
+                new String[]{"java","filesharing.peertopeer.P2PFileSharing"},
+                new File("./")
+            );
         } catch (Exception e) {
-            showError("Failed to open browser for Module 4");
+            peerStatus.setText("Peer to Peer Service failed");
+            logError("Peer to Peer backend failed", e);
         }
-
     }
 
     private void launchModule5Clients() {

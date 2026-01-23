@@ -89,7 +89,7 @@ public class ComplaintClientUI extends JFrame {
 
         try {
             // CHANGE IP if server is on another machine
-            Socket socket = new Socket("localhost", 5000);
+            Socket socket = new Socket("localhost", 6000);
 
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
