@@ -44,6 +44,7 @@ Each module solves a specific hostel-related problem using a different distribut
 <img src="./Architecture-Diagrams/M1%20Architecture%20Diagram.jpeg" width="500px" alt="Module-1_Architecture_Diagram">
 
 ---
+
 ### Module – 2: Hostel Room Information Service
 
 **Communication Model**: Java RMI (Remote Method Invocation)
@@ -55,6 +56,7 @@ Students require a simple and efficient way to retrieve hostel room information 
 A distributed Java application using Java RMI, where a client-side desktop UI allows students to search for hostel room details by entering a room number. The backend RMI server processes the request and returns the corresponding room and warden information from in-memory storage.
 
 **Features**
+
 1. A simple desktop-based UI developed using Java Swing that allows students to enter a room number.
 2. Java RMI-based communication between the client and server for remote data access.
 3. The RMI server exposes multiple remote methods to fetch hostel room and warden details.
@@ -74,7 +76,8 @@ A distributed Java application using Java RMI, where a client-side desktop UI al
 8. The RMI runtime handles stub–skeleton communication, object serialization, and network-level details transparently.
 
 The system demonstrates core concepts of distributed object management and remote method invocation.
----
+
+## <img src="./Architecture-Diagrams/M2%20Architecture%20Diagram.jpeg" width="500px" alt="Module-1_Architecture_Diagram">
 
 ### Module - 3: Hostel Notice Board System
 
