@@ -11,7 +11,7 @@ public class RMIserver {
         try {
             HostelRoomService service = new HostelRoomServiceImpl();
 
-            Registry registry = LocateRegistry.createRegistry(1099);
+            Registry registry = LocateRegistry.createRegistry(8000);
             registry.rebind("HostelRoomService", service);
 
             System.out.println("RMI Server started...");

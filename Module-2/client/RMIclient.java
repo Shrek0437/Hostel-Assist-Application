@@ -10,7 +10,7 @@ public class RMIclient {
 
     public static RoomInfo fetchRoomDetails(int roomNumber) {
         try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            Registry registry = LocateRegistry.getRegistry("localhost", 8000);
             HostelRoomService service =
                     (HostelRoomService) registry.lookup("HostelRoomService");
 
